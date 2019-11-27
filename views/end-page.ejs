@@ -1,0 +1,39 @@
+<% include header %>
+
+<body>
+  <div id="end-container">
+    <h1 id="title"><%= name_of_session %></h1>
+    <div id="idea-container">
+      <% for(let i = 0 ; i < arr.length ; i++) { %>
+
+      <div class="idea card text-white bg-dark mb-3">
+        <div class="card-header" contenteditable="true">
+          Give the idea a name!
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Ide <%= arr.indexOf(arr[i]) %></h5>
+          <p class="card-text"><%= arr[i].msg %></p>
+        </div>
+      </div>
+
+      <% } %>
+    </div>
+
+    <button onclick="printPDF()">Print PDF</button>
+  </div>
+
+  <script>
+    let title = document.getElementById("title").innerHTML;
+    function printPDF() {
+      var printDoc = new jsPDF();
+      printDoc.setFontSize(24);
+      printDoc.text(20, 20, title);
+
+      printDoc.fromHTML($("#idea-container").get(0), 30, 30, { width: 150 });
+      printDoc.save("document.pdf");
+      //printDoc.output("dataurlnewwindow"); // this opens a new popup,  after this the PDF opens the print window view but there are browser inconsistencies with how this is handled
+    }
+  </script>
+</body>
+
+<% include footer %>
