@@ -1,0 +1,70 @@
+<% include header %>
+<body>
+  <div id="container">
+    <div id="leftContainer">
+      <h1 id="title"><%= session_name %></h1>
+      <div id="briefANDclock">
+        <div id="brief" class="card shadow-textarea">
+          <h3 id="sesh-brief">Session brief</h3>
+          <p class="card-body"><%= session_brief %></p>
+        </div>
+
+        <div id="clock" class="card shadow-textarea">
+          <p id="countdown" class="card-body">Click button to start time</p>
+          <button id="mixButton" class="btn btn-light btn-lg">start</button>
+        </div>
+      </div>
+      <!--<div id="message-container"></div>
+      <form id="send-container">
+        <!--<div id="content-container">
+          <textarea id="ide"></textarea>
+        </div> -->
+      <div id="writeArea">
+        <form
+          id="send-container"
+          method="POST"
+          class="form-group shadow-textarea"
+        >
+          <textarea
+            id="message-input"
+            class="form-control z-depth-1"
+            cols="30"
+            rows="10"
+            placeholder="Start Writing here.."
+            style="overflow: scroll; word-wrap: break-word;  height: 200px;"
+          ></textarea>
+          <button type="submit" id="send-button" class="btn btn-light btn-lg">
+            Send
+          </button>
+        </form>
+        <button onclick="copyAndSend()">End session</button>
+        <!-- Hidden form -->
+        <form
+          id="hidden_form"
+          method="POST"
+          action="/end-page"
+          style="display: none"
+        >
+          <textarea
+            name="user_idea"
+            id="hidden_textarea"
+            cols="30"
+            rows="10"
+          ></textarea>
+          <button id="hidden_btn" type="submit"></button>
+        </form>
+      </div>
+    </div>
+    <div id="rightContainer">
+      <table id="tableUsers">
+        <tr id="tr1">
+          <th>User:</th>
+          <th>Status:</th>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <script defer src="/script.js"></script>
+</body>
+
+<% include footer %>
